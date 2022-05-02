@@ -7,11 +7,12 @@
     --dark-main-color: #391742;
     --main-margin: 0 0 4vh 0;
     --section-margin-bottom: 3vh;
-    --section-margin: 0vh 1.25vw var(--section-margin-bottom);
-    --article-margin: 0 0 3vh 0;
+    --section-margin-right: 2vw;
+    --section-margin: 0 var(--section-margin-right) var(--section-margin-bottom) 0;
     --title-margin-top: 2vh;
     --title-margin: var(--title-margin-top) 0 4vh;
-    --section-padding: 2.5vh 1.25vw;
+    --section-padding-top: 2.5vh;
+    --section-padding: var(--section-padding-top) 1.25vw;
 }
 
 * {
@@ -86,6 +87,7 @@ h1, h2, h3 {
     grid-template-columns: auto 1fr auto;
     margin: var(--main-margin);
     padding-top: var(--section-margin-bottom);
+    padding-left: var(--section-margin-right);
 }
 
 nav, aside {
@@ -96,7 +98,6 @@ nav, aside {
 
 ul {
     display: flex;
-
 }
 
 nav ul {
@@ -113,8 +114,7 @@ main {
     height: fit-content;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    gap: 4vh 2vw;
+    row-gap: var(--section-margin-bottom);
     margin: var(--section-margin);
 }
 
@@ -124,7 +124,7 @@ article {
 
 article img {
     width: 420px;
-    height: 290px;
+    height: 285px;
 }
 
 article p {
@@ -143,7 +143,7 @@ article .content_container {
 aside .content_container {
     flex-direction: column;
     justify-content: center;
-    gap: 2vh 3vw;
+    gap: var(--section-padding-top) 3vw;
 }
 
 footer {
@@ -170,7 +170,7 @@ footer ul {
 
 @media screen and (max-width: 1024px) {
     nav, main, aside {
-        grid-column: 1 /span 3;
+        grid-column: 1 / -1;
     }
 
     nav {
@@ -179,18 +179,14 @@ footer ul {
         padding: 2vh 3vw;
     }
 
-    nav ul {
+    nav ul, aside .content_container {
         flex-direction: row;
         flex-wrap: wrap;
+        justify-content: space-evenly;
     }
 
     li {
         min-width: 10vw;
-    }
-
-    aside .content_container {
-        flex-direction: row;
-        flex-wrap: wrap;
     }
 
     article, aside {
